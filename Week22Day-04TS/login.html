@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <input type="text" name="username" id="username">
+    <br><br>
+    <input type="password" name="password" id="password">
+    <br><br>
+    <button type="button" onclick="validation()">Login</button>
+</body>
+
+</html>
+
+<script>
+
+
+    function validation() {
+        var usernamelogin = document.getElementById("username").value;
+        var passwordlogin = document.getElementById("password").value;
+        if (usernamelogin == "admin" && passwordlogin == "1234") {
+            localStorage.setItem("username", "admin");
+            localStorage.setItem("password", "1234");
+            window.location = "profile1.html";
+        }
+        else {
+            alert("The username / password is incorrect");
+        }
+    }
+</script>

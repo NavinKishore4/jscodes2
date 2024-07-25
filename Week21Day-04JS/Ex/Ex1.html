@@ -1,0 +1,72 @@
+<div>
+    <table border="2">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>UserName</th>
+            <th>Password</th>
+            <th>Company Name</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+
+        </thead>
+        <tbody id="target">
+
+        </tbody>
+
+    </table>
+</div>
+
+<script>
+    var url = "https://jsonplaceholder.org/users";
+
+    fetch(url).then(response => {
+        console.log(response.ok);
+        console.log(response.status);
+        if (response.ok == false) {
+            console.error("The errors as occured");
+        }
+        else {
+            return response.json();
+        }
+    }).then(data => {
+        //logic for table
+        var tbody = document.getElementById("target");
+        data.forEach(temp => {
+            console.log(data.firstname);
+            var tr = document.createElement("tr");
+            var tdId = document.createElement("td");
+            var tdName = document.createElement("td");
+            var tdEmail = document.createElement("td");
+            var tdPassword = document.createElement("td");
+            var tdCompanyname = document.createElement("td");
+            var tdlat = document.createElement("td");
+            var tdlong = document.createElement("td");
+
+
+
+            tdId.innerHTML = temp.id;
+            tdName.innerHTML = temp.firstname + " " + temp.lastname;
+            tdEmail.innerHTML = temp.login.username;
+            tdPassword.innerHTML = temp.login.password;
+            tdCompanyname.innerHTML = temp.company.name;
+            tdlat.innerHTML = temp.address.geo.lat;
+            tdlong.innerHTML = temp.address.geo.lng;
+
+            tr.appendChild(tdId);
+            tr.appendChild(tdName);
+            tr.appendChild(tdEmail);
+            tr.appendChild(tdPassword);
+            tr.appendChild(tdCompanyname);
+            tr.appendChild(tdlat);
+            tr.appendChild(tdlong);
+
+
+
+
+            tbody.appendChild(tr);
+        })
+    }).catch(error => {
+        console.warn(error);
+    })
+</script>

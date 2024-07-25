@@ -1,0 +1,29 @@
+//JSON
+var students={
+    "students":[
+        {
+            "name": "navin","age":"18"
+        },
+        {
+            "name": "navin","age":"18"
+        },
+        {
+            "name": "navin","age":"18"
+        }
+    ]
+};
+
+var newStudents={
+    "students":[
+        {
+            "name":"saran","age":"21"
+        },
+        {
+            "name":"saran","age":"21"
+        }
+    ]
+}
+
+students.students = students.students.concat(newStudents.students);
+console.log(students);
+

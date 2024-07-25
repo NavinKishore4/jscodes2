@@ -1,0 +1,35 @@
+<script>
+
+    var post = {
+        "slug": "greatlearning",
+        "title": "Great Learning Chennai",
+        "url": "www.thegreatlearning.com"
+    };
+
+    var url = "https://jsonplaceholder.org/posts";
+
+    //header
+    var header = {
+        "method": "POST",
+        "body": JSON.stringify(post),
+        "headers": {
+            "content-type": "application/json"
+        }
+    }
+
+    //actual data
+
+    fetch(url, header).then(response => {
+        if (response.ok == false) {
+            console.error("Failed To Add Data");
+        }
+        else {
+            return response.json();
+        }
+    }).then(data => {
+        console.log(data);
+    }).catch(error => {
+        console.warn(error + "error");
+    })
+
+</script>
